@@ -18,10 +18,11 @@ sphere.material.transparent = true;
 scene.add(spotLight);
 scene.add(sphere);
 camera.position.z = 250;
-renderer.domElement.addEventListener('click', function () {
+renderer.domElement.addEventListener('click', function() {
   renderer.domElement.requestPointerLock();
 });
-function zoom (way, int) {
+
+function zoom(way, int) {
   if (way === 'in') {
     camera.position.z -= int;
   }
@@ -29,12 +30,17 @@ function zoom (way, int) {
     camera.position.z += int;
   }
 }
+function radToDeg (rad) {
+    return (rad * 180) / Math.PI;
+}
+function degToRad (deg) {
+    return (deg * Math.PI) / 180;
+}
 document.addEventListener('mousemove', function (event) {
-    let scale = -0.01;
-    orbit.rotateY(event.movementX * -0.01);
-    orbit.rotateX(event.movementY * -0.01); 
-    orbit.rotation.z = 0;
+	camera.rotation.z += event.movementY * -0.01;
+	camera.rotation.y += event.movementX * -0.01;
 });
+let theta = 1;
 const orbit = new THREE.Object3D();
 orbit.rotation.order = "YXZ";
 orbit.position.copy(sphere.position);
@@ -50,23 +56,26 @@ window.addEventListener('keydown', function (event) {
       zoom('out', 10);
       break;
     case 'w':
-      camera.position.z -= 10;
+			camera.position.x += 5 * Math.sin(camera.rotation.y + degToRad(180));
+      camera.position.z -= 5 * Math.sin(camera.rotation.y + degToRad(90));
       break;
-    case 'a':
-      camera.position.x -= 10;
+		case 'a':
+			camera.position.x += 5 * Math.sin(camera.rotation.y - degToRad(90));
+      camera.position.z -= 5 * Math.sin(camera.rotation.y + degToRad(180));
       break;
     case 's':
-      camera.position.z += 10;
+      camera.position.x -= 5 * Math.sin(camera.rotation.y + degToRad(180));
+      camera.position.z += 5 * Math.sin(camera.rotation.y + degToRad(90));
       break;
-    case 'd':
-      camera.position.x += 10;
+		case 'd':
+			camera.position.x -= 5 * Math.sin(camera.rotation.y - degToRad(90));
+      camera.position.z += 5 * Math.sin(camera.rotation.y + degToRad(180));
       break;
   }
   camera.updateProjectionMatrix();
 });
-function animate () {
+function animate() {
   requestAnimationFrame(animate);
-  sphere.rotation.y += 0.01;
   renderer.render(scene, camera);
 };
-animate();
+animate()

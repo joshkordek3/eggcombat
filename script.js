@@ -1,8 +1,6 @@
 // import cameraControls from "https://cdn.skypack.dev/camera-controls@1.34.1";
 // const CameraControls = cameraControls;
 // CameraControls.install({THREE: THREE});
-import GLTFLoader from 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/jsm/loaders/GLTFLoader.js';
-const loader = new GLTFLoader();
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
@@ -49,11 +47,6 @@ orbit.add(camera);
 window.addEventListener('keydown', function (event) {
   if (event.key === '+') zoom('in', 10);
   if (event.key === '-') zoom('out', 10);
-});
-GLTFLoader.load('egg.c4d', function (gltf) {
-  scene.add(gltf.scene);
-}, undefined, function (error) {
-  alert(`Error occured when loading image: ${error}`);
 });
 function animate () {
   requestAnimationFrame(animate);

@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <script src="https://threejs.org/build/three.js"></script>
+  </head>
+  <body>
+    <script>
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+      const spotLight = new THREE.SpotLight(0xffffff);
+      spotLight.position.set(100, 100, 100);
+      spotLight.castShadow = true;
+      spotLight.shadowMapWidth = 1024;
+      spotLight.shadowMapHeight = 1024;
+      spotLight.shadowCameraNear = 500;
+      spotLight.shadowCameraFar = 4000;
+      spotLight.shadowCameraFov = 30;
+      const sphere = new THREE.Mesh(
+        egg,
+        new THREE.MeshPhongMaterial({
+          color: 0xffff20, 
+          wireframe: 1,
+          opacity: 0.15
+        })
+      );
+      scene.add(spotLight);
+      scene.add(sphere);
+      camera.position.z = 5;
+      function animate () {
+        requestAnimationFrame(animate);
+        sphere.rotation.x += 0.01;
+        sphere.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      };
+      animate();
+    </script>
+  </body>
+</html>

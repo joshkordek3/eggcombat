@@ -144,7 +144,7 @@
 	let _quaternionB;
 	let _rotationMatrix;
 	let _raycaster;
-	class CameraControls extends EventDispatcher {
+	export class CameraControls extends EventDispatcher {
 	    constructor(camera, domElement) {
 	        super();
 	        this.minPolarAngle = 0;

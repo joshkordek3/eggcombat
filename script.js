@@ -36,8 +36,8 @@ function degToRad (deg) {
   return (deg * Math.PI) / 180;
 }
 document.addEventListener('mousemove', function (event) {
-	camera.rotation.z += event.movementY * -0.01;
-	camera.rotation.y += event.movementX * -0.01;
+//   camera.rotation.z += event.movementY * -0.01;
+  camera.rotation.y += event.movementX * -0.01;
 });
 let theta = 1;
 const orbit = new THREE.Object3D();
@@ -55,11 +55,11 @@ window.addEventListener('keydown', function (event) {
       zoom('out', 10);
       break;
     case 'w':
-			camera.position.x += 5 * Math.sin(camera.rotation.y + degToRad(180));
+      camera.position.x += 5 * Math.sin(camera.rotation.y + degToRad(180));
       camera.position.z -= 5 * Math.sin(camera.rotation.y + degToRad(90));
       break;
 		case 'a':
-			camera.position.x += 5 * Math.sin(camera.rotation.y - degToRad(90));
+      camera.position.x += 5 * Math.sin(camera.rotation.y - degToRad(90));
       camera.position.z -= 5 * Math.sin(camera.rotation.y + degToRad(180));
       break;
     case 's':
@@ -67,14 +67,14 @@ window.addEventListener('keydown', function (event) {
       camera.position.z += 5 * Math.sin(camera.rotation.y + degToRad(90));
       break;
 		case 'd':
-			camera.position.x -= 5 * Math.sin(camera.rotation.y - degToRad(90));
+      camera.position.x -= 5 * Math.sin(camera.rotation.y - degToRad(90));
       camera.position.z += 5 * Math.sin(camera.rotation.y + degToRad(180));
       break;
   }
   camera.updateProjectionMatrix();
 });
-function animate() {
+function animate () {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 };
-animate()
+animate();

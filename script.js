@@ -18,10 +18,10 @@ sphere.material.transparent = true;
 scene.add(spotLight);
 scene.add(sphere);
 camera.position.z = 250;
-renderer.domElement.addEventListener('click', function() {
+renderer.domElement.addEventListener('click', function () {
   renderer.domElement.requestPointerLock();
 });
-function zoom(way, int) {
+function zoom (way, int) {
   if (way === 'in') {
     camera.position.z -= int;
   }
@@ -30,10 +30,10 @@ function zoom(way, int) {
   }
 }
 function radToDeg (rad) {
-    return (rad * 180) / Math.PI;
+  return (rad * 180) / Math.PI;
 }
 function degToRad (deg) {
-    return (deg * Math.PI) / 180;
+  return (deg * Math.PI) / 180;
 }
 document.addEventListener('mousemove', function (event) {
 	camera.rotation.z += event.movementY * -0.01;

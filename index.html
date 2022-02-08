@@ -18,7 +18,7 @@
       spotLight.shadowCameraFar = 4000;
       spotLight.shadowCameraFov = 30;
       const sphere = new THREE.Mesh(
-        egg,
+        new THREE.SphereGeometry(15, 32, 16), 
         new THREE.MeshPhongMaterial({
           color: 0xffff20, 
           wireframe: 1,
@@ -27,7 +27,7 @@
       );
       scene.add(spotLight);
       scene.add(sphere);
-      camera.position.z = 5;
+      camera.position.z = 60;
       function animate () {
         requestAnimationFrame(animate);
         sphere.rotation.x += 0.01;

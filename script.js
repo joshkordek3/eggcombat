@@ -46,11 +46,9 @@ orbit.position.copy(sphere.position);
 scene.add(orbit);
 camera.position.z = 1;
 orbit.add(camera);
-document.getElementById('plus').addEventListener('click', function () {
-  zoom('in', 20);
-});
-document.getElementById('minus').addEventListener('click', function () {
-  zoom('out', 20);
+window.addEventListener('keydown', function (event) {
+  if (event.key === '+') zoom('in', 10);
+  if (event.key === '-') zoom('out', 10);
 });
 GLTFLoader.load('egg.c4d', function (gltf) {
   scene.add(gltf.scene);

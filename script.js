@@ -41,9 +41,28 @@ orbit.position.copy(sphere.position);
 scene.add(orbit);
 camera.position.z = 1;
 orbit.add(camera);
-document.addEventListener('keydown', function (event) {
-  if (event.key === '+') zoom('in', 10);
-  if (event.key === '-') zoom('out', 10);
+window.addEventListener('keydown', function (event) {
+  switch (event.key.toLowerCase()) {
+    case '+':
+      zoom('in', 10);
+      break;
+    case '-':
+      zoom('out', 10);
+      break;
+    case 'w':
+      camera.position.z -= 10;
+      break;
+    case 'a':
+      camera.position.x -= 10;
+      break;
+    case 's':
+      camera.position.z += 10;
+      break;
+    case 'd':
+      camera.position.x += 10;
+      break;
+  }
+  camera.updateProjectionMatrix();
 });
 function animate () {
   requestAnimationFrame(animate);

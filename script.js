@@ -21,7 +21,6 @@ camera.position.z = 250;
 renderer.domElement.addEventListener('click', function() {
   renderer.domElement.requestPointerLock();
 });
-
 function zoom(way, int) {
   if (way === 'in') {
     camera.position.z -= int;

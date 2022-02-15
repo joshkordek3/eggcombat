@@ -3,19 +3,19 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-const spotLight = new THREE.SpotLight('blue');
-spotLight.position.set(0, 0, 500);
-spotLight.castShadow = true;
-spotLight.shadowMapWidth = 1024;
-spotLight.shadowMapHeight = 1024;
-spotLight.shadowCameraNear = 500;
-spotLight.shadowCameraFar = 4000;
-spotLight.shadowCameraFov = 30;
+// const spotLight = new THREE.SpotLight('blue');
+// spotLight.position.set(0, 0, 500);
+// spotLight.castShadow = true;
+// spotLight.shadowMapWidth = 1024;
+// spotLight.shadowMapHeight = 1024;
+// spotLight.shadowCameraNear = 500;
+// spotLight.shadowCameraFar = 4000;
+// spotLight.shadowCameraFov = 30;
 const sphere = new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.SphereGeometry(100, 32, 16)));
 sphere.material.depthTest = false;
 sphere.material.opacity = 0.25;
 sphere.material.transparent = true;
-scene.add(spotLight);
+// scene.add(spotLight);
 scene.add(sphere);
 camera.position.z = 250;
 renderer.domElement.addEventListener('click', function () {
@@ -36,7 +36,6 @@ function degToRad (deg) {
   return (deg * Math.PI) / 180;
 }
 document.addEventListener('mousemove', function (event) {
-//   camera.rotation.z += event.movementY * -0.01;
   camera.rotation.y += event.movementX * -0.01;
 });
 let theta = 1;
